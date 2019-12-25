@@ -1,10 +1,10 @@
 #!/system/bin/sh
-# Advanced Charging Controller (acc) Initializer
+# On Charge Controller Initializer
 # Copyright (c) 2017-2019, VR25 (xda-developers)
 # License: GPLv3+
 
 set +x
-id=acc
+id=on-charge-controller
 umask 077
 
 # log
@@ -30,12 +30,9 @@ mkdir -p /sbin/.$id
   || cp -a $modPath /sbin/.$id/$id
 ln -fs /sbin/.$id/$id/$id.sh /sbin/$id
 ln -fs /sbin/.$id/$id/$id.sh /sbin/${id}-en
-ln -fs /sbin/.$id/$id/${id}d-start.sh /sbin/${id}d
-ln -fs /sbin/.$id/$id/${id}d-status.sh /sbin/${id}d,
-ln -fs /sbin/.$id/$id/${id}d-stop.sh /sbin/${id}d.
 
 # generate power supply log
-(. $modPath/psl.sh $(sed -n s/versionCode=//p $modPath/module.prop) &) &
+# (. $modPath/psl.sh $(sed -n s/versionCode=//p $modPath/module.prop) &) &
 
 # fix termux's PATH
 termuxSu=/data/data/com.termux/files/usr/bin/su
@@ -46,26 +43,24 @@ if [ -f $termuxSu ] && grep -q 'PATH=.*/sbin/su' $termuxSu; then
 fi
 
 # exclude charging switches with odd values
-(cd /sys/class/power_supply/
-: > /sbin/.$id/switches
-while IFS= read -r file; do
-  if [ -f $(echo $file | awk '{print $1}') ]; then
-    on=$(echo $file | awk '{print $2}')
-    off=$(echo $file | awk '{print $3}')
-    file=$(echo $file | awk '{print $1}')
-    chmod +r $file 2>/dev/null
-    if grep -Eq "^($on|$off)$" $file || ! cat $file; then
-      echo "$file $on $off" >> /sbin/.$id/switches
-    fi > /dev/null 2>&1
-  fi
-done << EOF
-$(grep -Ev '#|^$' $modPath/switches.txt)
-EOF
-)
+# (cd /sys/class/power_supply/
+# : > /sbin/.$id/switches
+# while IFS= read -r file; do
+#   if [ -f $(echo $file | awk '{print $1}') ]; then
+#     on=$(echo $file | awk '{print $2}')
+#     off=$(echo $file | awk '{print $3}')
+#     file=$(echo $file | awk '{print $1}')
+#     chmod +r $file 2>/dev/null
+#     if grep -Eq "^($on|$off)$" $file || ! cat $file; then
+#       echo "$file $on $off" >> /sbin/.$id/switches
+#     fi > /dev/null 2>&1
+#   fi
+# done << EOF
+# $(grep -Ev '#|^$' $modPath/switches.txt)
+# EOF
+# )
 
 # start ${id}d
-(sleep 30
-pkill -9 -f /psl.sh 2>/dev/null &) &
-$modPath/${id}d.sh &) &
+$modPath/${id}.sh &) &
 
 exit 0

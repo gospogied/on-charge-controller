@@ -13,7 +13,7 @@
 
 set +x
 echo
-id=acc
+id=on-charge-controller
 umask 077
 
 # log

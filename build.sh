@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # Installation Archives Builder
-# Copyright (c) 2018-2019, VR25 (xda-developers.com)
+# Copyright (c) 2019, GospoGied (gospogied.pl)
 # License: GPLv3+
 
 (cd ${0%/*} 2>/dev/null

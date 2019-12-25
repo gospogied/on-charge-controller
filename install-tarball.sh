@@ -3,7 +3,7 @@
 # Copyright (c) 2019, VR25 (xda-developers.com)
 # License: GPLv3+
 
-id=acc
+id=on-charge-controller
 umask 077
 
 # log

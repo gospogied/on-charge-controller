@@ -4,7 +4,7 @@
 # License: GPLv3+
 
 
-(id=acc
+(id=on-charge-controller
 installerName=install
 tarballName=${id}_bundle
 destination=/mnt/d/Desktop/AccA/app/src/main/res/raw

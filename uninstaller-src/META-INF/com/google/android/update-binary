@@ -3,7 +3,7 @@
 # id is set/corrected by build.sh
 
 set -u
-id=acc
+id=on-charge-controller
 
 # set up busybox
 PATH=/sbin/.magisk/busybox

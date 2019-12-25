@@ -1,11 +1,11 @@
 #!/system/bin/sh
 # $id Installer/Upgrader
-# Copyright (c) 2019, VR25 (xda-developers.com)
+# Copyright (c) 2019, GospoGied (gospogied.pl)
 # License: GPLv3+
 
 set +x
 echo
-id=acc
+id=on-charge-controller
 umask 077
 
 # log

@@ -1,11 +1,11 @@
-# Advanced Charging Controller (ACC)
+# On Charge Controller
 
 
 
 ---
 ## LEGAL
 
-Copyright (c) 2017-2019, VR25 (xda-developers.com)
+Copyright (c) 2019, GospoGied (gospogied.pl)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -36,16 +36,16 @@ To prevent fraud, do NOT mirror any link associated with this project; do NOT sh
 ---
 ## WARNING
 
-ACC manipulates Android low level ([kernel](https://duckduckgo.com/?q=kernel+android)) parameters which control the charging circuitry.
+on-charge-controller manipulates Android low level ([kernel](https://duckduckgo.com/?q=kernel+android)) parameters which control the boot bechaviour.
 The author assumes no responsibility under anything that might break due to the use/misuse of this software.
-By choosing to use/misuse ACC, you agree to do so at your own risk!
+By choosing to use/misuse on-charge-controller, you agree to do so at your own risk!
 
 
 
 ---
 ## DESCRIPTION
 
-ACC is primarily intended for [extending battery service life](https://batteryuniversity.com/learn/article/how_to_prolong_lithium_based_batteries). On the flip side, the name says it all.
+on-charge-controller is primarily intended for always booting when charger is connected to phone. On the flip side, the name says it all.
 
 
 
@@ -55,7 +55,7 @@ ACC is primarily intended for [extending battery service life](https://batteryun
 - Android or Android based OS
 - Any root solution (e.g., Magisk)
 - Busybox (only if not rooted with Magisk)
-- curl (for `acc --upgrade`, your ROM may already have it; if not, there's the Magisk module `curl for Android` by Zackptg5)
+- curl (for `on-charge-controller --upgrade`, your ROM may already have it; if not, there's the Magisk module `curl for Android` by Zackptg5)
 - Terminal emulator (e.g., Termux)
 - Text editor (optional)
 
@@ -65,18 +65,13 @@ ACC is primarily intended for [extending battery service life](https://batteryun
 ## QUICK START GUIDE
 
 
-1. Unless Magisk is not installed, always install/upgrade from Magisk Manager or dedicated ACC front-end. Apps such as EX Kernel Manager and FK Kernel Manager are also good options.
-2. [Optional] run `su -c acc STOP_LEVEL RESUME_LEVEL` (default `80 70`) or use a front-end app to change settings.
-3. If you encounter any trouble, scroll down to the `TROUBLESHOOTING`, `TIPS` and `FAQ` sections.
+1. Unless Magisk is not installed, always install/upgrade from Magisk Manager.
+2. If you encounter any trouble, scroll down to the `TROUBLESHOOTING`, `TIPS` and `FAQ` sections.
 
 
 ### Notes
 
-- `2` is optional because there are default settings. For details, refer to the `DEFAULT CONFIGURATION` section below.
-
-- Settings can be overwhelming. Start with what you understand and leave everything else default - until you have squeezed enough knowledge from this document.
-
-- Uninstall: depending o the installed variant, you can run `su -c acc --uninstall` or flash `/sdcard/acc-uninstaller.zip` (both are universal), use Magisk Manager (app) or [Magisk Manager for Recovery Mode (utility)](https://github.com/VR-25/mm/), or clear the front-end app data. The flashable uninstaller works everywhere - Magisk Manager, kernel managers, TWRP, etc..
+- Uninstall: depending o the installed variant, you can run `su -c on-charge-controller --uninstall` or flash `/sdcard/acc-uninstaller.zip` (both are universal), use Magisk Manager (app). The flashable uninstaller works everywhere - Magisk Manager, kernel managers, TWRP, etc..
 
 
 
@@ -92,10 +87,9 @@ ACC is primarily intended for [extending battery service life](https://batteryun
 
 ### Build Tarballs and Flashable Zips
 
-1. Download the source code: `git clone https://github.com/VR-25/acc.git` or `wget  https://github.com/VR-25/acc/archive/$reference.tar.gz -O - | tar -xz` or `curl -L#  https://github.com/VR-25/acc/archive/$reference.tar.gz | tar -xz`
-2. `cd acc*`
-3. `sh build.sh` (or double-click `build.bat` on Windows 10, if you have Windows subsystem for Linux installed)
-
+1. Download the source code: 
+2. `cd on-charge-controller*`
+3. `sh build.sh`
 
 #### Notes
 
@@ -622,6 +616,9 @@ It's a software (Android/kernel) issue. Use the `capacityOffset` feature.
 
 ---
 ## LATEST CHANGES
+
+**2019.12.24 (201912241)**
+- code used for different app
 
 **2019.10.13-r2-dev (201910132)**
 - `forceStatusAt100`: ensure the battery service is ready before freezing/unfreezing the charging status
